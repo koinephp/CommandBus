@@ -6,7 +6,7 @@ Simple implementation of Command Bus pattern
 Code information:
 
 [![Build Status](https://travis-ci.org/koinephp/CommandBus.png?branch=master)](https://travis-ci.org/koinephp/CommandBus)
-[![Coverage Status](https://coveralls.io/repos/koinephp/CommandBus/badge.svg?branch=master)](https://coveralls.io/r/koinephp/CommandBus?branch=master)
+[![Coverage Status](https://coveralls.io/repos/koinephp/CommandBus/badge.svg?branch=master&service=github)](https://coveralls.io/github/koinephp/CommandBus?branch=master)
 [![Code Climate](https://codeclimate.com/github/koinephp/CommandBus.png)](https://codeclimate.com/github/koinephp/CommandBus)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/koinephp/CommandBus/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/koinephp/CommandBus/?branch=master)
 

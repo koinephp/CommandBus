@@ -14,10 +14,10 @@ interface CommandBusAwareInterface
      *
      * @return self
      */
-    public function setCommandBus(CommandBus $commandBus);
+    public function setCommandBus(CommandHandlerInterface $commandBus);
 
     /**
-     * @return CommandBus
+     * @return CommandHandlerInterface
      *
      * @throws \DomainException
      */

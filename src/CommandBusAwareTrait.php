@@ -19,7 +19,7 @@ trait CommandBusAwareTrait
      *
      * @return self
      */
-    public function setCommandBus(CommandBus $commandBus)
+    public function setCommandBus(CommandHandlerInterface $commandBus)
     {
         $this->commandBus = $commandBus;
 
@@ -27,7 +27,7 @@ trait CommandBusAwareTrait
     }
 
     /**
-     * @return CommandBus
+     * @return CommandHandlerInterface
      *
      * @throws \DomainException
      */

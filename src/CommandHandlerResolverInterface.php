@@ -14,7 +14,7 @@ interface CommandHandlerResolverInterface
      *
      * @throws Exception\CommandHandlerNotFoundException
      *
-     * @return CommandHandlerInterface
+     * @return CommandHandlerInterface|null
      */
     public function getHandler(CommandInterface $command);
 }

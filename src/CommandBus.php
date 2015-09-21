@@ -3,6 +3,7 @@
 namespace Koine\CommandBus;
 
 use Koine\CommandBus\Exception\CommandHandlerNotFoundException;
+use Koine\CommandBus\Exception\InvalidCommandHandlerException;
 
 /**
  * Koine\CommandBus\CommandBus
@@ -84,21 +85,23 @@ class CommandBus implements CommandHandlerInterface
     private function getHandler(CommandInterface $command)
     {
         foreach ($this->getResolvers() as $resolver) {
-            try {
-                $handler = $resolver->getHandler($command);
+            $handler = $resolver->getHandler($command);
 
-                if ($handler instanceof CommandHandlerInterface) {
-                    return $handler;
-                }
+            if ($handler === null) {
+                continue;
+            }
 
-                throw new CommandHandlerNotFoundException(
+            if (!$handler instanceof CommandHandlerInterface) {
+                throw new InvalidCommandHandlerException(
                     sprintf(
-                        'Command handler must implement %s',
+                        'Class "%s" does not implement %s',
+                        get_class($handler),
                         'Koine\CommandBus\CommandHandlerInterface'
                     )
                 );
-            } catch (CommandHandlerNotFoundException $e) {
             }
+
+            return $handler;
         }
 
         throw new CommandHandlerNotFoundException(

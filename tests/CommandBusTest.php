@@ -2,12 +2,13 @@
 
 namespace KoineTest\CommandBus;
 
-use PHPUnit_Framework_TestCase;
-use Koine\CommandBus\CommandBus;
 use Dummy\Command\DoDummyThing;
 use Dummy\Command\DummyHandlerResolver;
 use Dummy\Command\DummyOtherHandlerResolver;
+use Dummy\Command\InvalidResolver;
 use Dummy\Command\NoHandlerCommand;
+use Koine\CommandBus\CommandBus;
+use PHPUnit_Framework_TestCase;
 
 /**
  * Koine\CommandBus\CommandBusTest
@@ -45,6 +46,17 @@ class CommandBusTest extends PHPUnit_Framework_TestCase
     public function throwsExceptionWhenHandlerIsNotFound()
     {
         $this->commandBus->handle(new NoHandlerCommand());
+    }
+
+    /**
+     * @test
+     * @expectedException Koine\CommandBus\Exception\InvalidCommandHandlerException
+     * @expectedExceptionMessage Class "stdClass" does not implement Koine\CommandBus\CommandHandlerInterface
+     */
+    public function handleThrowsExceptionWhenHandlerDoesNotImplementHandlerInterface()
+    {
+        $this->commandBus->setResolvers(array(new InvalidResolver()));
+        $this->commandBus->handle(new DoDummyThing());
     }
 
     /**

@@ -5,12 +5,13 @@ namespace Dummy\Command;
 use Koine\CommandBus\CommandHandlerResolverInterface;
 use Koine\CommandBus\CommandInterface;
 
-class DummyHandlerResolver implements CommandHandlerResolverInterface
+/**
+ * Dummy\Command\InvalidResolver
+ */
+class InvalidResolver implements CommandHandlerResolverInterface
 {
     public function getHandler(CommandInterface $command)
     {
-        if ($command instanceof DoDummyThing) {
-            return new DoDummyThingHandler();
-        }
+        return new \StdClass();
     }
 }
